@@ -1,5 +1,5 @@
 note over browser:
-I write "Learning Fullstackopen", then I click on bottom send
+I write " Learning Fullstackopen", then I click on bottom send
 end note
 
 browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
