@@ -1,36 +1,47 @@
 import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
-
-
-  
+ 
   const now = new Date()
   const a = 10
   const b = 20
+  const name = ['Flavio','Roberto','Nicolas']
+  const age = [15,22,15,76,2]
+  
 
-  console.log('Hello from component')
+  console.log()
 
-  const Hello= () => {
+  const Hello= (props) => {
+    
     return (
 
-    <div>
-      <p>Hola mundo</p>
-    </div>
-
-
+    <>
+      <p>Hola mundo {props.name}, you are {props.age} years old</p>
+    </>
   )} 
+
+  const Footer = () => {
+    return (
+      <>
+        greeting app created by <a href="https://github.com/mluukkai">mluukkai</a>
+      </>
+    )
+  }
+  
 
 
   const App= document.getElementById('root');
-  const RenderDom=ReactDOMClient.createRoot(App)
+  const RenderDom=ReactDOMClient.createRoot(App) 
   RenderDom.render(
-    <div>
+    <>
         <h1>Greetings</h1>
-        <Hello />
-        <p>Hello world</p>
-        
-
+        <Hello name={name[2]} age={20+20} />
+        <Hello name='Agustin' age={age[3]+2}/>
+        <p>Hello world</p>  
         <p>{a} plus {b} is {a + b} at the time {now.toString()}</p>
-    </div>
+
+        <Footer/>
+
+    </>
 
 
   );
