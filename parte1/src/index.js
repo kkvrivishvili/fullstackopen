@@ -1,47 +1,97 @@
 import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
- 
-  const now = new Date()
-  const a = 10
-  const b = 20
-  const name = ['Flavio','Roberto','Nicolas']
-  const age = [15,22,15,76,2]
+
+// Header Component 
+
+const Header= (header) => {    
+  return (
+  <>
+    <h1>{header.course}</h1>
+  </>
+)} 
+
+
+// Content Component Parts
+
+const Content= (content) => {  
   
+  return (
+  <>
+      <Part
+        part={content.parts[0].name}
+        exercise={content.parts[0].exercises}
+      />
+      <Part
+        part={content.parts[1].name}
+        exercise={content.parts[1].exercises}
+      />
+      <Part
+        part={content.parts[2].name}
+        exercise={content.parts[2].exercises }
+      />
+  </>
+)} 
 
-  console.log()
+// Content Component 
 
-  const Hello= (props) => {
-    
-    return (
+const Part= (content) => {  
+  
+  return (
+  <>
+    <p>
+    {content.part} {content.exercise}    
+    </p>  
+  </>
+)} 
+
+// Total Component 
+
+const Total= (total) => {   
+
+  return (
+
+  <>
+    <p>
+        Number of exercises
+        {total.parts[0].exercises + 
+        total.parts[1].exercises + 
+        total.parts[2].exercises}
+    </p>
+  </>
+)} 
+
+// App Component 
+
+const App= () => {   
+
+  const text = {
+    title: "Half Stack application development",
+    parts: 
+    [  
+    {name: "Fundamentals of React",exercises: 10,},   
+    {name: "Using props to pass data",exercises: 7,},   
+    {name: "State of a component",exercises: 14,},
+    ],
+  };
+
+  return (
 
     <>
-      <p>Hola mundo {props.name}, you are {props.age} years old</p>
+    <Header course={text.title}  />
+    <Content parts={text.parts} />
+    <Total parts={text.parts} />
     </>
-  )} 
-
-  const Footer = () => {
-    return (
-      <>
-        greeting app created by <a href="https://github.com/mluukkai">mluukkai</a>
-      </>
-    )
-  }
-  
+)} 
 
 
-  const App= document.getElementById('root');
-  const RenderDom=ReactDOMClient.createRoot(App) 
+
+
+
+// Primary ReactDOM Component
+
+const PrimaryComponent= document.getElementById('root');
+const RenderDom=ReactDOMClient.createRoot(PrimaryComponent) 
+
   RenderDom.render(
-    <>
-        <h1>Greetings</h1>
-        <Hello name={name[2]} age={20+20} />
-        <Hello name='Agustin' age={age[3]+2}/>
-        <p>Hello world</p>  
-        <p>{a} plus {b} is {a + b} at the time {now.toString()}</p>
-
-        <Footer/>
-
-    </>
-
-
-  );
+    <App  />
+  )
