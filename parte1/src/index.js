@@ -52,7 +52,7 @@ const Total= (total) => {
 
   <>
     <p>
-        Number of exercises
+        Number of exercises {" "}
         {total.parts[0].exercises + 
         total.parts[1].exercises + 
         total.parts[2].exercises}
